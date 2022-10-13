@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Zotero+OneDrive+Koofr实现多端同步</title>
+      <link href="/2022/10/14/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/"/>
+      <url>/2022/10/14/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h1><p>Zotero下载官网：软件下载界面<br>微软用户直接点击“Download”，其他系统用户选择对应的安装包下载就可以<br>用什么浏览器打开就会显示对应的Zotero Connector</p><p>Zotero的安装整体比较常规：<br>双击.exe安装包后按照提示要求进行操作就好<br>同时<strong>注意setup类型选择Custom</strong>，不然它会默认装到C盘里面</p><p>安装好后可以设置软件语言，我觉得简体中文用着顺手，就一直保留它的初始语言设置<br>如需更改语言，操作步骤为：编辑–&gt;首选项–&gt;高级–&gt;常规–&gt;语言</p><h1 id="注册登录"><a href="#注册登录" class="headerlink" title="注册登录"></a>注册登录</h1><p>为了实现不同设备之间内容的同步，可以进行账户的注册（邮箱注册）<br>同样也是在官网的注册界面进行：Zotero账户注册</p><p>注册好后就可以在Zotero中进行登录啦<br>操作步骤为：编辑–&gt;首选项–&gt;同步–&gt;输入用户名、密码</p><h1 id="实现OneDrive同步"><a href="#实现OneDrive同步" class="headerlink" title="实现OneDrive同步"></a>实现OneDrive同步</h1><p>因为Zotero自身同步的存储空间十分有限，需要搭载其他云存储软件，即网盘<br>网上关于Zotero+坚果云的使用教程很多，我看到电脑本身自带的OneDrive，就想试试看</p><p>其思想主要是：利用Zotero的WebDev功能链接网盘，实现同步。但是由于Onedrive不支持WebDev功能，故需要使用第三方平台Koofr链接OneDrive，使用Koofr提供的WebDev功能将Zotero与OneDrive实现关联存储。</p><blockquote><p>1、首先我们进入Koofr官网Welcome back - Koofr，注册一个Koofr账户。<br><img src="/img/wenzhangimg/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5_img1.png" alt="img1" title="img1"></p></blockquote><blockquote><p>2、进入Koofr后，我们就可以登陆OneDrive账户，这样我们就把OneDrive挂载到Koofr上了。<br><img src="/img/wenzhangimg/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5_img2.png" alt="img2" title="img2"></p></blockquote><blockquote><p>3、挂载完成后，点击头像，进入Preferences<br><img src="/img/wenzhangimg/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5_img3.png" alt="img3" title="img3"></p></blockquote><blockquote><p>4、然后点击Password，再在如图所示的地方，输入应用名（可以任意输入，主要是为了提醒你这是被哪个app在使用），点击生成密码，复制这个密码。<br><img src="/img/wenzhangimg/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5_img4.png" alt="img4" title="img4"><br><img src="/img/wenzhangimg/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5_img5.png" alt="img5" title="img5"></p></blockquote><blockquote><p>5、后面和使用坚果云类似，进入Zotero，点击编辑–&gt;首选项–&gt;同步，登陆Zotero账户以后，在下面的文件同步选择WebDAV，URL填写app.koofr.net&#x2F;dav&#x2F;OneDrive，注意：这里的“OneDrive”一定要和你的Koofr里面的目录名称对应。用户名就是你的Koofr账户，密码是上一步复制的密码。然后验证服务器，提示成功。<br><img src="/img/wenzhangimg/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5_img6.png" alt="img6" title="img6"></p></blockquote><blockquote><p>6、经过上面5个步骤，我们就将Zotero和OneDrive进行了同步，后面我们在使用的时候，就会直接使用OneDrive的空间。注意：最好不要在OneDrive客户端对Zotero文件夹的文件进行修改，容易造成同步错误，如果发现同步错误，可以在Zotero中重新同步。（在使用Zotero for ipad客户端的时候，可能会出现附件下载失败，这就是因为云上的文件与Zotero数据不同，导致同步出错，建议重置同步后再试试）<br><img src="/img/wenzhangimg/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/Zotero+OneDrive+Koofr%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5_img7.png" alt="img7" title="img7"></p></blockquote><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li>[1] <a href="https://blog.csdn.net/xingqing1415926/article/details/123261427">Zotero+OneDrive多平台在线同步完美解决方案（一）：安装配置、云端同步文献数据</a></li><li>[2] <a href="https://blog.csdn.net/m0_57202137/article/details/124643194?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-124643194-blog-125462303.pc_relevant_3mothn_strategy_and_data_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-1-124643194-blog-125462303.pc_relevant_3mothn_strategy_and_data_recovery&utm_relevant_index=2">完美Zotero文件同步，Zotero+Koofr+OneDrive神器叠buff</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Zotero </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Zotero </tag>
+            
+            <tag> Onedrive </tag>
+            
+            <tag> Koofr </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Project01图像和视频文件的读写与显示方法</title>
       <link href="/2022/10/05/Project01-01/"/>
       <url>/2022/10/05/Project01-01/</url>
